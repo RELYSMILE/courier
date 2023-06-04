@@ -1,0 +1,41 @@
+{% load static %}
+{% block content %}
+
+<header class="header">
+    <span>
+        <!-- <img src="{% static 'images/favicon.ico' %}" alt=""> -->
+        <a href="{% url 'home' %}" style="text-decoration: none;"><h1 class="logo"><span>BR</span>EM</h1></a><br><br>
+    <span class="greeting">
+        {% if request.user.is_authenticated %}
+        <p>Welcome {{request.user.first_name}}</p> 
+        {% endif %}
+    </span>
+</span>
+    <div class="nav-container">
+        <nav class="navbar" id="sidemenu">
+            <div><a href="https://www.canadapost-postescanada.ca/cpc/en/personal.page">Personal</a></div>
+            <div><a href="https://www.canadapost-postescanada.ca/cpc/en/business.page">Business</a></div>
+            <div><a href="https://www.canadapost-postescanada.ca/cpc/en/our-company.page">Our Company</a></div>
+            <div><a href="https://www.canadapost-postescanada.ca/store-boutique/en/home">Store</a></div>
+            <div><a href="https://www.canadapost-postescanada.ca/cpc/en/tools.page">Tools</a></div>
+            <div><!-- Logged In -->
+                {% if request.user.is_authenticated %}
+                <a class="logout" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a class="login" href="{% url 'login' %}">Login</a>
+                {% endif %}</div>
+            
+            <span class="burger_close" onclick="closemenu()">
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </span>
+        </nav>
+        <div class="burger" onclick="openmenu()">
+            <div class="burgers" id="burger1" onclick="openmenu()"></div>
+            <div class="burgers" id="burger2" onclick="openmenu()"></div>
+            <div class="burgers" id="burger3" onclick="openmenu()"></div>
+        </div>
+    </div>
+</header>
+
+
+{% endblock content %}

@@ -1,0 +1,159 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.tracking_view{
+    position: relative;
+    background-image: url("{% static 'base/images/bg1.jpg' %}");     
+    background-size: cover; 
+    height: 200vh;
+    padding: 1.5rem 0;
+    z-index: 1;
+}
+.tracking_view::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: .7;
+    z-index: -1;
+
+}
+</style>
+
+<div class="tracking_view">
+    <h1 style="padding: 0 3%; color: #00d9ff;">Tracking Result</h1>
+    <div class="tracking_view-main">
+    <table>
+        {% for shipper in shippers %}
+        <tr>
+            <th colspan="2" style="letter-spacing: .1rem;">SHIPPER DETAILS</th>
+        </tr>
+        <tr>
+            <th>Shipper Name</th>
+            <td>{{ shipper.shipper_name }}</td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>{{ shipper.phone_number }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ shipper.address }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ shipper.email }}</td>
+        </tr>
+        {% empty %}
+        <p>No shippers found.</p>
+        {% endfor %}
+    </table>
+    
+    
+    <table>
+        {% for receiver in receivers %}
+        <tr>
+            <th colspan="2" style="letter-spacing: .1rem;">RECEIVER DETAILS</th>
+        </tr>
+        <tr>
+            <th>Receiver Name</th>
+            <td>{{ receiver.receiver_name }}</td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>{{ receiver.phone_number }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ receiver.address }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ receiver.email }}</td>
+        </tr>
+        {% empty %}
+        <p>No receiver found.</p>
+        {% endfor %}
+    </table>
+</div>
+
+
+<div class="shipment-main">
+<table>
+    <tr>
+        <th colspan="2" style="letter-spacing: .1rem; background: #6242ad; color: #fff;"> <h2> SHIPMENT DETAILS</h2</th>
+    </tr>
+    <tr>
+        <th>Receiver Name</th>
+        <td>{{ shipment.receiver_name }}</td>
+    </tr>
+    <tr>
+        <th>Type of shipment</th>
+        <td>{{ shipment.types_of_shipment }}</td>
+    </tr>
+    <tr>
+        <th>Weight</th>
+        <td>{{ shipment.weight }}</td>
+    </tr>
+    <tr>
+        <th>Packages</th>
+        <td>{{ shipment.packages }}</td>
+    </tr>
+    <tr>
+        <th>Product</th>
+        <td>{{ shipment.product }}</td>
+    </tr>
+    <tr>
+        <th>Payment Mode</th>
+        <td>{{ shipment.payment_mode }}</td>
+    </tr>
+    <tr>
+        <th>Current Location</th>
+        <td style="font-weight: bold;">{{ shipment.current_location }}</td>
+    </tr>
+    <tr>
+        <th>Departure Time</th>
+        <td>{{ shipment.departure_time }}</td>
+    </tr>
+    <tr>
+        <th>Destination</th>
+        <td>{{ shipment.destination }}</td>
+    </tr>
+    <tr>
+        <th>Pickup Time</th>
+        <td>{{ shipment.pickup_time }}</td>
+    </tr>
+    <tr>
+        <th>Courier</th>
+        <td>{{ shipment.courier }}</td>
+    </tr>
+    <tr>
+        <th>Tracking Number</th>
+        <td>{{ shipment.tracking_number }}</td>
+    </tr>
+    <tr>
+        <th>Origin</th>
+        <td>{{ shipment.origin }}</td>
+    </tr>
+    <tr>
+        <th>Pickup Date</th>
+        <td>{{ shipment.pickup_date }}</td>
+    </tr>
+    <tr>
+        <th>Expected Delivery Date</th>
+        <td>{{ shipment.origin }}</td>
+    </tr>
+    <tr>
+        <th>Comment</th>
+        <td style="color: #fff;"><div class="shipment-comment">{{ shipment.comment }}</div></td>
+    </tr>
+    
+</table>
+</div>
+</div>
+{% endblock content %}

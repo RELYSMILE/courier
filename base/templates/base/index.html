@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+<style>
+    section{
+        background-image: url("{% static 'base/images/bg1.jpg' %}");     
+        background-size: cover; 
+        height: 38rem;
+    }
+    @media (max-width: 768px) {
+        section{
+        height: 65rem;
+        margin-top: 0rem;
+    }
+    }
+</style>
+
+<!--======= this is the banner section ==============-->
+<section class="banner">
+    <div class="header_text">
+        <h1>{{headers.header}}</h1>
+        <p>{{headers.header_text}}</p>
+    </div>
+    <img src="{{headers.picture.url}}" class="img" alt=""> 
+</section>
+<!--======= this is the banner section ==============-->
+
+<!-- =================track delivery section========================= -->
+{% include 'base/tracking_component.html' %}
+<!-- =================track delivery section========================= -->
+
+<!-- =================signup banner========================= --> 
+<div class="signup-banner">
+    <div class="signup-banner-main">
+        <div>
+            <h1>{{signupbanners.big_text}}</h1>
+            <p>{{signupbanners.small_text}}</p>
+        </div>
+        <a href="{% url 'register' %}"><div class="btn"> Signup</div></a>
+    </div>
+</div>
+
+<!-- =================signup banner========================= --> 
+
+
+<!-- =================South African advert========================= --> 
+<div class="sa-main">
+    <img src="{{southafrican.southAfricaupdate.url}}" alt="">
+    <div class="sa">
+        <h2>{{southafrican.big_text}}</h2>
+        <p>{{southafrican.small_text}}</p>
+        <br><br>
+        <a href="https://www.fedex.com/en-ng/shipping.html">Explore Now</a>
+    </div>
+</div>
+
+<!-- =================South African advert========================= --> 
+<div class="banner-container">
+    <div class="banner-container-1" id="container-1">
+        <h1>Personal</h1>
+        <a href="file:///C:/cpc/en/personal.page"><p class="personal">Go to Personal services</p></a>
+        <a href="file:///C:/cpc/en/personal/sending.page?"><p>Receiving</p></a>
+        <a href="file:///C:/cpc/en/personal/receiving.page?"><p>Sending</p></a>
+        <a href="file:///C:/cpc/en/personal/money-services.page?"><p>Money services</p></a>
+        <a href="file:///C:/cpc/en/personal/collectibles.page?"><p>Collectible stamps and coins</p></a>
+    </div>
+    <div class="banner-container-1">
+        <h1>Business</h1>
+        <a href="file:///C:/cpc/en/business.page"><p class="personal">Go to Business services</p></a>
+        <a href="file:///C:/cpc/en/business/shipping.page?"><p>Shipping</p></a>
+        <a href="file:///C:/cpc/en/business/marketing.page?"><p>Marketing</p></a>
+        <a href="file:///C:/cpc/en/business/ecommerce.page?"><p>E-commerce</p></a>
+        <a href="file:///C:/cpc/en/business/small-business.page?"><p>Small business</p></a>
+        <a href="file:///C:/cpc/en/business/postal-services.page?"><p>Postal services</p></a>
+    </div>
+</div>
+
+
+<!-- =================banner advert========================= --> 
+<div id="sa-main-1">
+    <img class="sa-main-imag-1" id="sa-main-imag-1-sm" src="{{bannerimages.bannerpictures1.url}}" alt="">
+    <img class="sa-main-imag-1" src="{{bannerimages.bannerpictures3.url}}" alt="">
+</div>
+
+<!-- =================banner advert========================= --> 
+
+{% include 'base/base.html' %}
+{% endblock content %}

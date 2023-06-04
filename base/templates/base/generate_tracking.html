@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .model{
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        padding-top: 10rem;
+        height: 100vh;
+        background: #081b29;
+    }
+    .model div{
+        font-weight: bolder;
+        letter-spacing: 0.1rem;
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        color: aqua;
+    }
+    .model h1{
+        color: #fff;
+    }
+    .model a{
+        border: 2px solid #000;
+        padding: 1.1rem 3rem;
+        text-decoration: none;
+        font-size: 1.5rem;
+        background: #58c7f3;
+        border-radius: .9rem;
+        transition: .5s;
+    }
+    .model a:hover{
+        background: transparent;
+        border: 2px solid #58c7f3;
+        color: #58c7f3;
+    }
+    .model #home{
+        background: blueviolet;
+        color: #fff;
+    }
+    .generator-btn{
+        display: flex;
+        justify-content: center;
+        padding: 0 3%;
+        align-items: center;
+    }
+
+    @media (max-width: 488px){
+    .model div{
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        color: aqua;
+    }
+    .model h1{
+        font-size: 1.5rem;
+    }
+    .generator-btn{
+        flex-direction: column;
+        align-items: normal;
+    }
+}
+</style>
+
+
+<div class="model" id="a">
+<h1>LET THE MODEL GENERATE ID FOR YOU</h1>
+    <div>BREM/{{trackingNumber1}}{{trackingNumber2}}</div><br><br><br><br>
+    <div class="generator-btn">
+        <a href="{% url 'generate_tracking' %}">Accelerate MD</a>
+        <a id="home" href="{% url 'home' %}">Home</a>
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+    .register-login-main{
+        position: relative;
+        background-image: url("{% static 'base/images/bg1.jpg' %}");     
+        background-size: cover; 
+        height: 60rem;
+        padding: 1.5rem 0;
+        z-index: 1;
+    }
+    .register-login-main::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: #000;
+        opacity: .5;
+        z-index: -1;
+
+    }
+</style>
+<div class="register-login-main">
+{% if page == 'login' %}
+<form class="form" action="" method="POST">
+    {% csrf_token %}
+    <h1>Login</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <label for="username">Email</label>
+    <input type="text" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <button class="btn" type="submit">Login</button>
+    <p>Dont have an Account? <a href="{% url 'register' %}">SignUp</a></p>
+</form>
+
+{% else %}
+<div>
+    <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <h1>Register</h1>
+         {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="user_details">
+        <label for="FirstName">First Name <span>*</span></label>
+        <input type="text" name="firstname" required>
+        <label for="MiddleName">Middle Name</label>
+        <input type="text" name="middlename" placeholder="Optional">
+        <label for="LastName">Last Name <span>*</span></label>
+        <input type="text" name="lastname" required>
+
+        <label for="Email">Email <span>*</span></label>
+        <input type="email" name="email" required>
+
+        <label for="phone">Contact Phone <span>*</span></label>
+        <input type="text" name="phone" required>
+
+        <label for="password">Passcode <span>*</span></label>
+        <input type="password" name="password" required>
+        <label for="Confirmpassword">Confirm Passcode <span>*</span></label>
+        <input type="password" name="Confirmpassword" required>
+        <button class="btn" type="submit">SignUp</button>
+        <p>have an Account?<a href="{% url 'login' %}"> Login</a></p>
+        </div>
+    </form>
+</div>
+
+</div>
+{% endif %}
+
+{% endblock content %}

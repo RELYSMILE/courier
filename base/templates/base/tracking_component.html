@@ -1,0 +1,39 @@
+
+{% block content %}
+<style>
+    .view-main{
+        display: flex;
+        padding: 0 10%;
+        border: 2px solid tomato;
+    }
+    .view{
+        text-align: center;
+        background: #6242ad;
+        border: 2px solid hsl(258, 45%, 47%);
+        padding: 1.5rem 3rem;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.3rem;
+    }
+    .messages{
+        padding: 0 10%;
+        list-style: none;
+        color: rgb(206, 30, 30);
+    }
+</style>
+
+{% if request.user.is_authenticated %}
+<form class="delivery" action="" method="POST">
+    {% csrf_token %}
+    <div><span>Track your delivery</span><input type="text" name="delivery" placeholder="Enter your Tracking id here" required></div>
+    <button class="btn" type="submit">Track</button>
+</form>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}{% endif %}   
+<!-- =================track delivery section========================= -->    
+{% endblock content %}

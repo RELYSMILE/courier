@@ -1,0 +1,28 @@
+<!-- base.html -->
+{% load i18n %}
+
+<html>
+<head>
+    ...
+</head>
+<body>
+    <div>
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()">
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for lang in languages %}
+                    <option value="{{ lang.code }}" {% if lang.code == LANGUAGE_CODE %}selected{% endif %}>
+                        {{ lang.name_local }} ({{ lang.code }})
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    {% block content %}
+    <!-- Your page content -->
+    <h1>select language page</h1>
+    {% endblock %}
+</body>
+</html>
